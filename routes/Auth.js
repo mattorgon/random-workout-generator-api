@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 
 // Register a new user
 router.post("/register", async (req, res) => {
-  console.log("Register route hit!"); // Add this line
+  console.log("Register route hit!");
   try {
     const { username, password } = req.body;
     console.log(username, password);
@@ -24,6 +24,7 @@ router.post("/register", async (req, res) => {
 
 // Login a user
 router.post("/login", async (req, res) => {
+  console.log("Login route hit!");
   try {
     const { username, password } = req.body;
     const user = await User.findOne({ username });
