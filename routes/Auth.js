@@ -48,4 +48,26 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// Check if a username is already taken
+router.get("/check-username", async (req, res) => {
+  try {
+    const { username } = req.query;
+
+    // Check if the username exists in the database
+    const existingUser = await User.findOne({ username });
+
+    // If the username is taken, respond accordingly
+    if (existingUser) {
+      res.json({ isTaken: true });
+    } else {
+      res.json({ isTaken: false });
+    }
+  } catch (error) {
+    console.error("Error checking username:", error);
+    res
+      .status(500)
+      .json({ error: "Internal Server Error", message: error.message });
+  }
+});
+
 module.exports = router;
