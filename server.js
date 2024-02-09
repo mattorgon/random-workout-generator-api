@@ -4,7 +4,8 @@ const bodyParser = require("body-parser");
 const { authenticateToken } = require("./middleware/authMiddleware"); // Import the middleware
 const connectDB = require("./config/mongo"); // Import the connectDB function
 const cors = require("cors"); // Import the cors middleware
-const authRoutes = require("./routes/auth");
+const authRoutes = require("./routes/Auth");
+const savedWorkoutsRoutes = require("./routes/SavedWorkouts");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -26,6 +27,7 @@ app.get("/protected-route", authenticateToken, (req, res) => {
 });
 
 app.use("/auth", authRoutes);
+app.use("/workouts", savedWorkoutsRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
