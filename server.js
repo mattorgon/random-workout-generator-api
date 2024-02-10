@@ -9,6 +9,11 @@ const savedWorkoutsRoutes = require("./routes/SavedWorkouts");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+//generate secret
+// const crypto = require("crypto");
+// const secretKey = crypto.randomBytes(32).toString("hex");
+// console.log("secret: ", secretKey);
+
 app.use(cors()); // Enable CORS for all routes
 
 app.use(bodyParser.json());
