@@ -34,11 +34,12 @@ router.get("/savedWorkouts", authenticateToken, async (req, res) => {
   try {
     // Retrieve the user ID from the authenticated token
     const userId = req.user.userId;
+    const date = req.query.date || new Date(); // Use provided date or today's date
 
     console.log("uid: ", userId);
 
     // Fetch saved workouts from the database based on the user ID
-    const savedWorkouts = await fetchSavedWorkouts(userId);
+    const savedWorkouts = await fetchSavedWorkouts(userId, date);
     console.log("sw", savedWorkouts);
 
     // Return the data as JSON

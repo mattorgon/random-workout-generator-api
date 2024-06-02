@@ -5,6 +5,24 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
 // Register a new user
+// router.post("/register", async (req, res) => {
+//   console.log("Register route hit!");
+//   try {
+//     const { username, password } = req.body;
+//     console.log(username, password);
+//     const user = new User({ username, password });
+//     await user.save();
+//     res.status(201).json({ message: "User registered successfully" });
+//   } catch (error) {
+//     // res.status(500).json({ error: "Internal Server Error" });
+//     console.error("Error during registration:", error);
+//     res
+//       .status(500)
+//       .json({ error: "Internal Server Error", message: error.message });
+//   }
+// });
+
+// Register a new user
 router.post("/register", async (req, res) => {
   console.log("Register route hit!");
   try {
@@ -12,9 +30,22 @@ router.post("/register", async (req, res) => {
     console.log(username, password);
     const user = new User({ username, password });
     await user.save();
-    res.status(201).json({ message: "User registered successfully" });
+
+    // Generate a token for the registered user
+    const token = jwt.sign(
+      { userId: user._id },
+      "bdde87a7703e44e0e2c8a1b20053838f185f4f91d30fd12b82138786fa125fbc",
+      {
+        expiresIn: "1h",
+      }
+    );
+
+    res.status(201).json({
+      message: "User registered successfully",
+      userID: user._id,
+      token: token,
+    });
   } catch (error) {
-    // res.status(500).json({ error: "Internal Server Error" });
     console.error("Error during registration:", error);
     res
       .status(500)
