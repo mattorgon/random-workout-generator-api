@@ -9,12 +9,13 @@ const { fetchSavedWorkouts } = require("../utils/Database");
 router.post("/saveWorkout", async (req, res) => {
   try {
     const { userId, savedExercises } = req.body;
-
+    console.log("saved exercises: ", savedExercises);
     const userWorkout = new Workout({
       user: userId, // Use the user's _id here
       date: new Date(),
-      exercises: savedExercises.map((exerciseName) => ({
-        name: exerciseName,
+      exercises: savedExercises.map((exercise) => ({
+        name: exercise.name,
+        segment: exercise.segment,
       })),
     });
 
