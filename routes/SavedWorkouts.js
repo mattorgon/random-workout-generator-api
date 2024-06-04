@@ -5,21 +5,52 @@ const User = require("../models/User");
 const { authenticateToken } = require("../middleware/authMiddleware");
 const { fetchSavedWorkouts } = require("../utils/Database");
 
+const allSegments = {
+  Back: 0,
+  Biceps: 0,
+  Chest: 0,
+  Legs: 0,
+  Shoulders: 0,
+  Triceps: 0,
+  Core: 0,
+  Cardio: 0,
+  // Add any other segments as needed
+};
+
 // POST endpoint to save workout data
 router.post("/saveWorkout", async (req, res) => {
   try {
     const { userId, savedExercises } = req.body;
+    console.log("endpoint hit, req: ", req.body);
     console.log("saved exercises: ", savedExercises);
     const userWorkout = new Workout({
       user: userId, // Use the user's _id here
       date: new Date(),
       exercises: savedExercises.map((exercise) => ({
         name: exercise.name,
-        segment: exercise.segment,
+        category: exercise.segment,
       })),
     });
 
     const savedWorkout = await userWorkout.save();
+
+    // Group exercises by category (segment)
+    const segmentCounts = savedExercises.reduce((acc, exercise) => {
+      acc[exercise.segment] = (acc[exercise.segment] || 0) + 1;
+      return acc;
+    }, {});
+
+    // Update user's bodySegments data
+    const user = await User.findById(userId);
+
+    for (const [segment, count] of Object.entries(segmentCounts)) {
+      user.bodySegments.set(
+        segment,
+        (user.bodySegments.get(segment) || 0) + count
+      );
+    }
+
+    await user.save();
 
     res
       .status(200)
@@ -51,5 +82,29 @@ router.get("/savedWorkouts", authenticateToken, async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
+router.get(
+  "/users/:userId/bodySegments",
+  authenticateToken,
+  async (req, res) => {
+    try {
+      const user = await User.findById(req.params.userId);
+      if (!user) {
+        return res.status(404).send("User not found");
+      }
+
+      // Merge existing segments with default segments
+      const mergedSegments = {
+        ...allSegments,
+        ...Object.fromEntries(user.bodySegments),
+      };
+
+      res.status(200).json(mergedSegments);
+    } catch (error) {
+      console.error("Error fetching body segments:", error);
+      res.status(500).send("Failed to fetch body segments");
+    }
+  }
+);
 
 module.exports = router;
