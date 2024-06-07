@@ -27,7 +27,7 @@ router.post("/register", async (req, res) => {
   console.log("Register route hit!");
   try {
     const { username, password } = req.body;
-    console.log(username, password);
+    // console.log(username, password);
     const user = new User({ username, password });
     await user.save();
 
@@ -59,7 +59,7 @@ router.post("/login", async (req, res) => {
   try {
     const { username, password } = req.body;
     const user = await User.findOne({ username });
-    console.log(user);
+    // console.log(user);
 
     if (!user) {
       return res.status(401).json({ error: "Invalid username or password" });

@@ -21,8 +21,7 @@ const allSegments = {
 router.post("/saveWorkout", async (req, res) => {
   try {
     const { userId, savedExercises } = req.body;
-    console.log("endpoint hit, req: ", req.body);
-    console.log("saved exercises: ", savedExercises);
+    // console.log("saved exercises: ", savedExercises);
     const userWorkout = new Workout({
       user: userId, // Use the user's _id here
       date: new Date(),
@@ -68,11 +67,8 @@ router.get("/savedWorkouts", authenticateToken, async (req, res) => {
     const userId = req.user.userId;
     const date = req.query.date || new Date(); // Use provided date or today's date
 
-    console.log("uid: ", userId);
-
     // Fetch saved workouts from the database based on the user ID
     const savedWorkouts = await fetchSavedWorkouts(userId, date);
-    console.log("sw", savedWorkouts);
 
     // Return the data as JSON
     res.json(savedWorkouts);
