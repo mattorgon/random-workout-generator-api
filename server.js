@@ -13,7 +13,11 @@ const PORT = process.env.PORT || 3001;
 // Enable CORS for all routes
 app.use(
   cors({
-    origin: "https://random-workout-generator-ff903ce3cfea.herokuapp.com", // Replace with your actual frontend URL
+    origin: [
+      "https://random-workout-generator-ff903ce3cfea.herokuapp.com",
+      "https://ipickulift.com", // Custom domain
+      "https://www.ipickulift.com", // Custom domain with www // Replace with your actual frontend URL
+    ],
     credentials: true,
   })
 );
