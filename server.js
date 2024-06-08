@@ -11,7 +11,6 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Enable CORS for all routes
-// app.use(cors());
 app.use(
   cors({
     origin: "https://random-workout-generator-ff903ce3cfea.herokuapp.com", // Replace with your actual frontend URL
