@@ -10,6 +10,14 @@ const savedWorkoutsRoutes = require("./routes/SavedWorkouts");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// Redirect HTTP to HTTPS
+app.use((req, res, next) => {
+  if (req.headers["x-forwarded-proto"] !== "https") {
+    return res.redirect(["https://", req.get("Host"), req.url].join(""));
+  }
+  next();
+});
+
 // Enable CORS for all routes
 app.use(
   cors({
