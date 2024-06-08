@@ -8,6 +8,8 @@ import {
   UsernameTaken,
 } from "../styles/ComponentStyles";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const SignMeUp = ({ formData, setFormData }) => {
   const [isUsernameTaken, setIsUsernameTaken] = useState(false);
 
@@ -31,7 +33,7 @@ const SignMeUp = ({ formData, setFormData }) => {
   const checkUsernameAvailability = async (username) => {
     try {
       const response = await fetch(
-        `http://localhost:3001/auth/check-username?username=${username}`
+        `${API_URL}/auth/check-username?username=${username}`
       );
       const result = await response.json();
       console.log("result: ", result);
@@ -49,7 +51,7 @@ const SignMeUp = ({ formData, setFormData }) => {
 
     // Make a POST request to the registration endpoint
     try {
-      const response = await fetch("http://localhost:3001/auth/register", {
+      const response = await fetch(`${API_URL}/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

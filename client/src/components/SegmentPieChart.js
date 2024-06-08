@@ -11,6 +11,8 @@ import { useAuth } from "../context/AuthContext";
 import { useDarkMode } from "../context/DarkModeProvider";
 import { darkModeStyles, lightModeStyles } from "../styles";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 Chart.register(PieController, ArcElement, Tooltip, Legend, Title);
 
 const BodySegmentsPieChart = () => {
@@ -23,7 +25,7 @@ const BodySegmentsPieChart = () => {
     const fetchSegmentData = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3001/workouts/users/${userId}/bodySegments`,
+          `${API_URL}/workouts/users/${userId}/bodySegments`,
           {
             method: "GET",
             headers: {

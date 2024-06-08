@@ -8,6 +8,8 @@ import {
   InvalidLogin,
 } from "../styles/ComponentStyles";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const LogMeIn = ({ formData, setFormData }) => {
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -26,7 +28,7 @@ const LogMeIn = ({ formData, setFormData }) => {
     setErrorMessage("");
 
     try {
-      const response = await fetch("http://localhost:3001/auth/login", {
+      const response = await fetch(`${API_URL}/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

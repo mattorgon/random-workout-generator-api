@@ -23,6 +23,8 @@ import {
   ChartContainer,
 } from "../styles/ComponentStyles";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const CustomTextField = (props) => {
   return (
     <TextField
@@ -50,7 +52,7 @@ const SavedWorkoutsPage = () => {
 
         for (const date of dateRange) {
           const response = await fetch(
-            `http://localhost:3001/workouts/savedWorkouts?date=${date.toISOString()}`,
+            `${API_URL}/workouts/savedWorkouts?date=${date.toISOString()}`,
             {
               method: "GET",
               headers: {

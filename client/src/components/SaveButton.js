@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { SaveButtonStyle } from "../styles/ComponentStyles";
 import { useAuth } from "../context/AuthContext";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const SaveButton = ({ buttonText, exercises, isWorkoutGenerated }) => {
   const { userId } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
@@ -17,19 +19,16 @@ const SaveButton = ({ buttonText, exercises, isWorkoutGenerated }) => {
   const handleSave = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch(
-        "http://localhost:3001/workouts/saveWorkout",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            userId: userId, // Replace with the actual user ID. username for now
-            savedExercises: exercises,
-          }),
-        }
-      );
+      const response = await fetch(`${API_URL}/workouts/saveWorkout`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: userId, // Replace with the actual user ID. username for now
+          savedExercises: exercises,
+        }),
+      });
 
       if (response.ok) {
         console.log("Workout saved successfully!");
