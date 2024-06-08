@@ -17,10 +17,15 @@ app.use(
       "https://random-workout-generator-ff903ce3cfea.herokuapp.com",
       "https://ipickulift.com", // Custom domain
       "https://www.ipickulift.com", // Custom domain with www // Replace with your actual frontend URL
+      "http://localhost:3000",
     ],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
 );
+
+app.options("*", cors()); // Handle preflight requests
 
 // Parse JSON bodies
 app.use(bodyParser.json());

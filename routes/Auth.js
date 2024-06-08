@@ -36,6 +36,13 @@ router.post("/register", async (req, res) => {
       expiresIn: "1h",
     });
 
+    // Set cookie with token
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "None",
+    });
+
     res.status(201).json({
       message: "User registered successfully",
       userID: user._id,
@@ -69,6 +76,13 @@ router.post("/login", async (req, res) => {
 
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
       expiresIn: "1h",
+    });
+
+    // Set cookie with token
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "None",
     });
 
     res.status(200).json({ token, userID: user._id });
