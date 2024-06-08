@@ -1,0 +1,110 @@
+{
+  "exercises": {
+    "Back": {
+      "image": "/assets/back_test.jpg",
+      "exercises": [
+        "Pull-ups",
+        "Lat Pulldowns",
+        "Bent Over Rows",
+        "Deadlifts",
+        "Hyperextensions",
+        "Face Pulls",
+        "T-Bar Rows",
+        "Shrugs",
+        "Chin-ups",
+        "Single-Arm Dumbbell Rows"
+      ]
+    },
+
+    "Biceps": {
+      "image": "/assets/biceps_test.jpg",
+      "exercises": [
+        "Bicep Curls",
+        "Hammer Curls",
+        "Concentration Curls",
+        "EZ Bar Curls",
+        "Preacher Curls",
+        "Reverse Curls",
+        "Zottman Curls",
+        "21s",
+        "Spider Curls",
+        "Dumbbell Hammer Curls"
+      ]
+    },
+    "Chest": {
+      "image": "/assets/chest_test.jpg",
+      "exercises": [
+        "Bench Press",
+        "Incline Bench Press",
+        "Decline Bench Press",
+        "Dumbbell Flyes",
+        "Push-ups",
+        "Chest Dips",
+        "Chest Press Machine",
+        "Cable Crossover",
+        "Pec Deck Machine",
+        "Incline Dumbbell Press"
+      ]
+    },
+    "Triceps": {
+      "image": "/assets/triceps_test.jpg",
+      "exercises": [
+        "Tricep Dips",
+        "Skull Crushers",
+        "Tricep Kickbacks",
+        "Close-Grip Bench Press",
+        "Overhead Tricep Extension",
+        "Cable Tricep Pushdowns",
+        "Diamond Push-ups",
+        "Tricep Rope Pushdowns",
+        "Tricep Bench Dips",
+        "Reverse Grip Tricep Pushdowns"
+      ]
+    },
+    "Legs": {
+      "image": "/assets/legs_test.jpg",
+      "exercises": [
+        "Squats",
+        "Deadlifts",
+        "Leg Press",
+        "Lunges",
+        "Leg Curls",
+        "Leg Extensions",
+        "Calf Raises",
+        "Romanian Deadlifts",
+        "Hack Squats",
+        "Step-ups"
+      ]
+    },
+    "Shoulders": {
+      "image": "/assets/shoulders_test.jpg",
+      "exercises": [
+        "Overhead Press",
+        "Front Raises",
+        "Lateral Raises",
+        "Reverse Flyes",
+        "Face Pulls",
+        "Shrugs",
+        "Upright Rows",
+        "Arnold Press",
+        "Lateral Raises Machine",
+        "Dumbbell Shoulder Press"
+      ]
+    },
+    "Cardio": {
+      "image": "/assets/cardio_test.jpg",
+      "exercises": [
+        "Running",
+        "Cycling",
+        "Jump Rope",
+        "Swimming",
+        "Rowing",
+        "Elliptical Training",
+        "High-Intensity Interval Training (HIIT)",
+        "Stair Climbing",
+        "Boxing",
+        "Dancing"
+      ]
+    }
+  }
+}

@@ -1,0 +1,41 @@
+.my-custom-slide-pane {
+    background-color: rgb(119, 119, 113);
+    border: 1px solid rgb(38, 38, 46);
+    
+    /* Add any additional custom styles here */
+  }
+  
+  .my-custom-slide-pane__title {
+    color: #ff5733;
+    
+    /* Add custom title styles here */
+  }
+
+  .my-custom-slide-pane.custom-width-panes.slide-pane_from_right .slide-pane__header {
+    /* Your custom styles for .slide-pane__header */
+    /* background-color: red; */
+    /* Add other styles as needed */
+  }
+
+  /* .my-custom-slide-pane.custom-width-panes.slide-pane_from_right .slide-pane__close { */
+    /* Your custom styles for .slide-pane__header */
+    /* background-color: blue;
+    margin-left: 0px;
+    display: flex; */
+    /* Add other styles as needed */
+  /* } */
+/* 
+  .slide-pane__close svg {
+    width: 4px; 
+    height: 4px; 
+    align-items: center;
+  } */
+
+  /* .slide-pane__title-wrapper {
+    margin-left: 0px;
+  } */
+
+  /* .slide-pane .slide-pane__header {
+    height: 40px !important; 
+  } */
+  
