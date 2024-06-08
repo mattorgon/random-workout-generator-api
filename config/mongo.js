@@ -33,6 +33,8 @@
 const mongoose = require("mongoose");
 
 const connectDB = async () => {
+  const dbUri = process.env.MONGO_URI;
+  console.log(`Connecting to database at ${dbUri}`);
   console.log("Mongo URI:", process.env.MONGO_URI);
 
   try {

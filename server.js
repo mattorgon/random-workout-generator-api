@@ -15,6 +15,7 @@ app.use(cors());
 
 // Parse JSON bodies
 app.use(bodyParser.json());
+console.log("Middlewares set...");
 
 // Connect to MongoDB
 connectDB();
