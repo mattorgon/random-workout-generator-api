@@ -21,6 +21,8 @@ xxxx----graph of exercise type ratio?----xxxx
 style graph
 xxxx----save workout ux----xxxx
 xxxx----sliding pane style----xxxx
+disable generate button
+change color on username available
 
 
   <!-- "Biceps": ["Bicep Curls", "Hammer Curls", "Concentration Curls", "EZ Bar Curls", "Preacher Curls", "Reverse Curls", "Zottman Curls", "21s", "Spider Curls", "Dumbbell Hammer Curls"],
